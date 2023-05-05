@@ -1,18 +1,20 @@
+#include "pitches.h";
 const int buttonPin = 2;
 const int ledPin = 12;
 const int ledPin2 = 3;
 const int pirPin = 4;
 const int buzzer = 8; 
+
 int buttonState = 0;
-bool buttonToggle = false;
-#include "pitches.h";
 int calibrationTime = 30;
 int lastState = 0;
+int PIRValue = 0;
 long unsigned int lowIn;
 long unsigned int pause = 5000;
+
 boolean lockLow = true;
 boolean takeLowTime;
-int PIRValue = 0;
+bool buttonToggle = false;
 bool looping = true;
 
 void setup() {
@@ -77,8 +79,6 @@ void song(){
   analogWrite(buzzer, 0);
 }
 
-
-
 void loop() {
   if(PIR() == 1 && lastState == 0){
     lastState = 1;
@@ -93,5 +93,4 @@ void loop() {
     lastState = 0;
     looping = true;
   }
-  
 }
